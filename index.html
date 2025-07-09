@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Three Levels of Agreement</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Tailwind Configuration for Brand Colors */
+        :root {
+            --color-brand-light-blue: #96ccd9;
+            --color-brand-dark-blue: #025159;
+            --color-brand-light-yellow: #f2d98d;
+            --color-brand-dark-orange: #d98e04;
+            --color-brand-light-grey: #f2f2f2;
+        }
+
+        .bg-brand-light-blue { background-color: var(--color-brand-light-blue); }
+        .text-brand-dark-blue { color: var(--color-brand-dark-blue); }
+        .bg-brand-dark-blue { background-color: var(--color-brand-dark-blue); }
+        .text-brand-light-yellow { color: var(--color-brand-light-yellow); }
+        .bg-brand-dark-orange { background-color: var(--color-brand-dark-orange); }
+        .text-brand-dark-orange { color: var(--color-brand-dark-orange); }
+        .bg-brand-light-grey { background-color: var(--color-brand-light-grey); }
+        .border-brand-dark-blue { border-color: var(--color-brand-dark-blue); }
+        .focus\:ring-brand-dark-blue:focus { --tw-ring-color: var(--color-brand-dark-blue); }
+        .border-brand-dark-orange { border-color: var(--color-brand-dark-orange); }
+
+        .accordion-header {
+            background-color: var(--color-brand-light-blue);
+            color: var(--color-brand-dark-blue);
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--color-brand-dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--color-brand-light-yellow);
+        }
+
+        .accordion-content {
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--color-brand-light-blue);
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--color-brand-dark-blue);
+        }
+
+        .accordion-item.active .accordion-content {
+            display: block;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-brand-light-grey font-sans antialiased p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
+        <!-- Header Section -->
+        <div class="bg-brand-dark-blue p-4 sm:p-6 rounded-t-xl">
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-light-yellow text-center">
+                Understanding the Three Levels of Agreement
+            </h2>
+            <p class="text-brand-light-blue text-center mt-2 text-sm sm:text-base">
+                Explore the general definitions of the three levels of agreement in contracting.
+            </p>
+        </div>
+
+        <!-- Accordion Items -->
+        <div class="accordion-container">
+            <!-- Level 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header rounded-t-lg sm:rounded-none">
+                    <span>Level 1: Agreed Documents (The "What Documents?")</span>
+                    <span class="accordion-icon text-xl">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="mb-2">
+                        <b>Definition:</b> These are the overarching documents that legally or formally bind the parties and outline the consulting engagement. It's about the physical or digital artifacts that capture the understanding.
+                    </p>
+                    <p>
+                        <b>Examples:</b> A formal Quote or Proposal, a Terms of Reference (TOR) document, or a full-fledged Contract. For less formal projects, a series of emails or a simple non-written agreement can serve as the "document" if mutually acknowledged.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Level 2: Agreed Topics & Policies (The "What Topics are Covered?")</span>
+                    <span class="accordion-icon text-xl">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="mb-2">
+                        <b>Definition:</b> These are the broad categories of information that the agreement (from Level 1) is expected to contain, ensuring a shared understanding of the project's framework.
+                    </p>
+                    <p>
+                        <b>Examples:</b> The agreement should generally include topics like Context, Services and Deliverables, Approach and Work Plan, Roles and Responsibilities, Acceptance Criteria, Terms and Conditions, and various Policies (e.g., regulatory framework, communication, risk management).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header rounded-b-lg sm:rounded-none">
+                    <span>Level 3: Agreed Detailed Content (The "What Specifics within Each Topic?")</span>
+                    <span class="accordion-icon text-xl">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="mb-2">
+                        <b>Definition:</b> This is the most granular level, diving into the specific information and details within each of the topics identified in Level 2. It's about filling in the blanks with precise data and clear descriptions.
+                    </p>
+                    <p>
+                        <b>Examples (for "Context" topic):</b> An accurate description of the client's current organizational situation, specific objectives for the assignment, a clear explanation of *why* the work needs to be done, any assumptions made and their potential impact, and the precise scope and explicit limits of the assignment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                const content = header.nextElementSibling;
+
+                // Toggle active class on the clicked item
+                item.classList.toggle('active');
+
+                // Toggle display of content
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px"; // Expand to full height
+                } else {
+                    content.style.maxHeight = "0"; // Collapse
+                }
+            });
+        });
+
+        // Set initial max-height for all accordion contents to 0 for smooth animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.style.maxHeight = "0";
+            });
+        });
+    </script>
+</body>
+</html>
